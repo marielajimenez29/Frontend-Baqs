@@ -1,0 +1,33 @@
+.container {
+  display: flex;
+  justify-content: center;
+}
+
+.login-container {
+  width: 30rem;
+  border-color: black;
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 15px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.login-container mat-form-field {
+  margin: 0 2rem;
+  width: 80%;
+}
+
+.button-login {
+  display: flex;
+  justify-content: center;
+  width: 90%;
+}
+.button-login button {
+  margin: 2rem 0;
+  width: 60%;
+  background: black;
+  color: white;
+}

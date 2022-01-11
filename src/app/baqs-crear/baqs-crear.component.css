@@ -1,0 +1,35 @@
+.first-field {
+  margin-top: 3rem;
+}
+
+.first-field mat-form-field {
+  margin-right: 1rem;
+}
+
+.second-field mat-form-field {
+  margin-right: 1rem;
+}
+.second-field button {
+  margin-left: 1rem;
+}
+
+.tabla-columnas {
+  width: 40%;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  margin-top: 3rem;
+}
+
+.buttons button {
+  background: black;
+  color: white;
+  width: 20%;
+  border-radius: 9px;
+}
+
+.buttons button[disabled] {
+  background: gray;
+}

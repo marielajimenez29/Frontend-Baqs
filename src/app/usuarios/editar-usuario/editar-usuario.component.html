@@ -1,0 +1,85 @@
+<!-- Mostrar errores -->
+<div>
+  <h1>Editar Usuario</h1>
+</div>
+
+<div class="formulario">
+  <form (submit)="editarUsuario()" [formGroup]="form">
+    <div class="selectores">
+      <mat-form-field appearance="outline">
+        <mat-label>Rol</mat-label>
+        <mat-select formControlName="idRol">
+          <mat-option *ngFor="let rol of roles" [value]="rol.idRol">
+            {{ rol.nombre }}
+          </mat-option>
+        </mat-select>
+        <mat-error>Debe seleccionar un rol.</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Compañia</mat-label>
+        <mat-select formControlName="idCompania">
+          <mat-option
+            *ngFor="let compania of companias"
+            [value]="compania.idCompania"
+          >
+            {{ compania.nombre }}
+          </mat-option>
+        </mat-select>
+        <mat-error>Debe seleccionar una compañia.</mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="datos">
+      <mat-form-field appearance="outline">
+        <mat-label>Nombre</mat-label>
+        <input formControlName="nombre" placeholder="Nombre" matInput />
+        <mat-error>Debe ingresar un Nombre.</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Email</mat-label>
+        <input
+          type="email"
+          formControlName="email"
+          placeholder="Email"
+          matInput
+        />
+        <mat-error>Debe ingresar un Email.</mat-error>
+      </mat-form-field>
+
+      <div>
+        <mat-checkbox
+          color="primary"
+          [(ngModel)]="checked"
+          formControlName="cambioPassword"
+          style="margin-bottom: 1rem"
+        >
+          Nuevo Password
+        </mat-checkbox>
+      </div>
+
+      <div *ngIf="checked">
+        <mat-form-field appearance="outline">
+          <mat-label>Nuevo Password</mat-label>
+          <input
+            type="password"
+            formControlName="_Password"
+            placeholder="Password"
+            matInput
+          />
+          <mat-error>El password debe contener más de 8 caracteres.</mat-error>
+        </mat-form-field>
+        <p>
+          *Si deja el campo de Password vacío, la contraseña no se modififcará.
+        </p>
+      </div>
+    </div>
+
+    <div>
+      <button mat-flat-button [disabled]="form.invalid">Guardar</button>
+
+      <a mat-stroked-button routerLink="/usuarios">Cancelar</a>
+    </div>
+  </form>
+</div>

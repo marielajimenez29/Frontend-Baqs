@@ -1,0 +1,27 @@
+.formulario {
+  width: 30%;
+}
+
+.selectores {
+  display: flex;
+  justify-content: space-between;
+}
+
+.selectores mat-form-field {
+  width: 45%;
+}
+
+.datos {
+  display: flex;
+  flex-direction: column;
+}
+
+button {
+  margin-right: 1rem;
+  background: black;
+  color: white;
+}
+
+.formulario button[disabled] {
+  background: gainsboro;
+}

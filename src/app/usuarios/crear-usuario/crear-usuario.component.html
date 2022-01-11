@@ -1,0 +1,69 @@
+<!-- Mostrar errores -->
+<div>
+  <h1>Crear Usuario</h1>
+</div>
+
+<div class="formulario">
+  <form (submit)="guardarUsuario()" [formGroup]="form">
+    <div class="selectores">
+      <mat-form-field appearance="outline">
+        <mat-label>Rol</mat-label>
+        <mat-select formControlName="idRol">
+          <mat-option *ngFor="let rol of roles" [value]="rol.idRol">
+            {{ rol.nombre }}
+          </mat-option>
+        </mat-select>
+        <mat-error>Debe seleccionar un rol.</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Compañia</mat-label>
+        <mat-select formControlName="idCompania">
+          <mat-option
+            *ngFor="let compania of companias"
+            [value]="compania.idCompania"
+          >
+            {{ compania.nombre }}
+          </mat-option>
+        </mat-select>
+        <mat-error>Debe seleccionar una compañia.</mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="datos">
+      <mat-form-field appearance="outline">
+        <mat-label>Nombre</mat-label>
+        <input formControlName="nombre" placeholder="Nombre" matInput />
+        <mat-error>Debe ingresar un Nombre.</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Email</mat-label>
+        <input
+          type="email"
+          formControlName="email"
+          placeholder="Email"
+          matInput
+        />
+        <mat-error>Debe ingresar un Email.</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Password</mat-label>
+        <input
+          type="password"
+          formControlName="_Password"
+          placeholder="Password"
+          matInput
+        />
+        <mat-error>Debe ingresar un Password.</mat-error>
+      </mat-form-field>
+    </div>
+
+    <div>
+      <button mat-flat-button [disabled]="form.invalid">Guardar</button>
+
+      <a mat-stroked-button routerLink="/usuarios">Cancelar</a>
+    </div>
+  </form>
+</div>

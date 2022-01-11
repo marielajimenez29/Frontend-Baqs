@@ -1,0 +1,52 @@
+<mat-toolbar>
+  <app-autorizado>
+    <ng-container autorizado>
+      <a mat-button routerLink="landingPage">
+        <img
+          src="https://www.elkayinteriorsystems.com/content/dam/eis/logos-hieroglyphs/svg/EIS_MKE_Milwaukee_EIS_Logo_01_white.svg"
+          alt=""
+          style="width: 2rem"
+        />
+
+        <span> Elkay Interios Systems</span>
+      </a>
+
+      <a mat-button routerLink="baqs">BAQS</a>
+
+      <a mat-button routerLink="programacion">Programación</a>
+      <a mat-button routerLink="correo">Correo</a>
+      <a mat-button routerLink="errores">Errores</a>
+    </ng-container>
+  </app-autorizado>
+
+  <app-autorizado [rol]="'Administrador'">
+    <ng-container autorizado>
+      <a mat-button routerLink="usuarios">Usuarios</a>
+    </ng-container>
+  </app-autorizado>
+
+  <div class="space"></div>
+
+  <app-autorizado>
+    <ng-container noAutorizado>
+      <a mat-button routerLink="login">Iniciar Sesión</a>
+    </ng-container>
+
+    <ng-container autorizado>
+      <a
+        mat-button
+        [matMenuTriggerFor]="opciones"
+        *ngIf="seguridadService.estaLogueado()"
+      >
+        <mat-icon>person</mat-icon>
+        {{ username() }}</a
+      >
+
+      <mat-menu #opciones="matMenu">
+        <button mat-menu-item (click)="seguridadService.logout()">
+          Cerrar Sesión
+        </button>
+      </mat-menu>
+    </ng-container>
+  </app-autorizado>
+</mat-toolbar>
