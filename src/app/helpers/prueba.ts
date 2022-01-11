@@ -1,3 +1,3 @@
 export function prueba() {
-  return 'hola';
+  return 'hola36';
 }
