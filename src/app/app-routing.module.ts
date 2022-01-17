@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { BaqsCrearComponent } from './baqs-crear/baqs-crear.component';
-import { BaqsComponent } from './baqs/baqs.component';
+import { IndiceAreasComponent } from './areas/indice-areas/indice-areas.component';
+import { BaqsCrearComponent } from './baqs/baqs-crear/baqs-crear.component';
+import { IndiceBaqsComponent } from './baqs/indice-baqs/indice-baqs.component';
 import { CorreoComponent } from './correo/correo.component';
 import { ErroresComponent } from './errores/errores.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
@@ -19,11 +20,13 @@ const routes: Routes = [
   { path: 'usuarios/crear', component: CrearUsuarioComponent },
   { path: 'usuarios/editar/:id', component: EditarUsuarioComponent },
 
-  { path: 'baqs', component: BaqsComponent },
+  { path: 'areas', component: IndiceAreasComponent },
+
+  { path: 'baqs', component: IndiceBaqsComponent },
   { path: 'baqs/crear', component: BaqsCrearComponent },
   { path: 'programacion', component: ProgramacionComponent },
-  { path : 'correo', component: CorreoComponent},
-  {path: 'errores', component: ErroresComponent},
+  { path: 'correo', component: CorreoComponent },
+  { path: 'errores', component: ErroresComponent },
 
   { path: '**', redirectTo: 'login' },
 ];

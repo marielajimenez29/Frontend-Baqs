@@ -24,24 +24,28 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatChipsModule } from '@angular/material/chips';
 ///
 
 import { MenuComponent } from './menu/menu.component';
 import { ListaUsuariosComponent } from './usuarios/lista-usuarios/lista-usuarios.component';
 import { CrearUsuarioComponent } from './usuarios/crear-usuario/crear-usuario.component';
 import { EditarUsuarioComponent } from './usuarios/editar-usuario/editar-usuario.component';
-import { BaqsComponent } from './baqs/baqs.component';
 import { ProgramacionComponent } from './programacion/programacion.component';
 import { LoginComponent } from './login/login/login.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { AutorizadoComponent } from './login/autorizado/autorizado.component';
-import { BaqsCrearComponent } from './baqs-crear/baqs-crear.component';
 import { MostrarErroresComponent } from './helpers/mostrar-errores/mostrar-errores.component';
 import { SpinnerComponent } from './helpers/spinner/spinner.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FooterComponent } from './footer/footer.component';
 import { CorreoComponent } from './correo/correo.component';
 import { ErroresComponent } from './errores/errores.component';
+import { IndiceAreasComponent } from './areas/indice-areas/indice-areas.component';
+import { IndiceBaqsComponent } from './baqs/indice-baqs/indice-baqs.component';
+import { BaqsCrearComponent } from './baqs/baqs-crear/baqs-crear.component';
 
 @NgModule({
   declarations: [
@@ -50,17 +54,18 @@ import { ErroresComponent } from './errores/errores.component';
     ListaUsuariosComponent,
     CrearUsuarioComponent,
     EditarUsuarioComponent,
-    BaqsComponent,
     ProgramacionComponent,
     LoginComponent,
     LandingPageComponent,
     AutorizadoComponent,
-    BaqsCrearComponent,
     MostrarErroresComponent,
     SpinnerComponent,
     FooterComponent,
     CorreoComponent,
     ErroresComponent,
+    IndiceAreasComponent,
+    IndiceBaqsComponent,
+    BaqsCrearComponent,
   ],
   imports: [
     BrowserModule,
@@ -80,6 +85,8 @@ import { ErroresComponent } from './errores/errores.component';
     MatMenuModule,
     MatTooltipModule,
     MatProgressSpinnerModule,
+    MatPaginatorModule,
+    MatChipsModule,
     NgbModule,
   ],
   providers: [],

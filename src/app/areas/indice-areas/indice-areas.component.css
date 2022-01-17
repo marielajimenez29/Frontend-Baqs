@@ -1,0 +1,11 @@
+button {
+  background: black;
+  color: white;
+  margin-top: 3rem;
+  margin-bottom: 2rem;
+}
+
+.tabla-areas,
+mat-paginator {
+  width: 50%;
+}

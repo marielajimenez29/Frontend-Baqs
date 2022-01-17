@@ -1,10 +1,12 @@
-.imagenes{
-    justify-content: center;
-    padding: 100px; 
-    margin: 0; 
-    height: auto;
-     float: center;
-    width: 100%;
-
+.imagenes {
+  justify-content: center;
+  padding: 100px;
+  margin: 0;
+  float: center;
+  width: 56rem;
 }
 
+.imagenes img {
+  height: 20rem;
+  width: 100%;
+}

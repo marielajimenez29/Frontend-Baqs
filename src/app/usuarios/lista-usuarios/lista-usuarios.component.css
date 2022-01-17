@@ -1,3 +1,10 @@
 .tabla-usuarios {
   width: 80%;
 }
+
+button {
+  margin-bottom: 2rem;
+  margin-top: 3rem;
+  background: black;
+  color: white;
+}

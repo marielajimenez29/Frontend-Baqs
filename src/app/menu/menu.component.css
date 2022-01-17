@@ -12,6 +12,10 @@ mat-toolbar {
 	otros elementos */
   z-index: 1000;
 }
-a:hover{
-  color:gainsboro
+a:hover {
+  color: gainsboro;
+}
+
+a {
+  text-decoration: none;
 }

@@ -1,0 +1,12 @@
+.tabla-baqs,
+mat-paginator {
+  width: 100%;
+}
+
+button {
+  background-color: black;
+  color: white;
+  width: 10%;
+  margin-top: 3rem;
+  margin-bottom: 2rem;
+}

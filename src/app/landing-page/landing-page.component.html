@@ -1,17 +1,13 @@
 <h1 style="text-align: center">Bienvenido</h1>
 <div class="imagenes">
   <div id="wrapper">
-      <ngb-carousel *ngIf="images">
-        <ng-template ngbSlide>
-          <img [src]="images[0]" alt="Random first slide">
-        </ng-template>
-        <ng-template ngbSlide>
-          <img [src]="images[1]" alt="Random second slide">
-        </ng-template>
-       
-      </ngb-carousel>
-      </div>
-                    
-  
+    <ngb-carousel *ngIf="images">
+      <ng-template ngbSlide>
+        <img [src]="images[0]" alt="Random first slide" />
+      </ng-template>
+      <ng-template ngbSlide>
+        <img [src]="images[1]" alt="Random second slide" />
+      </ng-template>
+    </ngb-carousel>
   </div>
-  
+</div>

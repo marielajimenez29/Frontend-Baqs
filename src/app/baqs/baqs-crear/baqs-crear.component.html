@@ -27,7 +27,7 @@
     <mat-form-field appearance="outline">
       <mat-label>Área*</mat-label>
       <mat-select formControlName="idArea">
-        <mat-option *ngFor="let area of areas" [value]="area.id">
+        <mat-option *ngFor="let area of areas" [value]="area.idArea">
           {{ area.nombre }}
         </mat-option>
       </mat-select>
@@ -79,7 +79,7 @@
       <button
         mat-flat-button
         style="background-color: black; color: white"
-        (click)="prueba()"
+        (click)="agregarColumna()"
       >
         Agregar
       </button>
@@ -160,7 +160,11 @@
   </div>
 
   <div class="buttons">
-    <button [disabled]="form.invalid || columnas.length <= 0" mat-flat-button>
+    <button
+      [disabled]="form.invalid || columnas.length <= 0"
+      mat-flat-button
+      (click)="crearTabla()"
+    >
       Crear Tabla
     </button>
   </div>

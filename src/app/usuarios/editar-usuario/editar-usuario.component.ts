@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { companiaDTO } from 'src/app/companias/compania';
 import { CompaniasService } from 'src/app/companias/companias.service';
+import { rolDTO } from 'src/app/roles/rol';
 import { RolesService } from 'src/app/roles/roles.service';
 import { usuarioActualizarDTO, usuarioDTO } from '../usuario';
 import { UsuariosService } from '../usuarios.service';
@@ -12,10 +14,9 @@ import { UsuariosService } from '../usuarios.service';
   styleUrls: ['./editar-usuario.component.css'],
 })
 export class EditarUsuarioComponent implements OnInit {
- // roles: import('d:/Espacio_de_trabajo/BAQS-Frontend/BAQS-Frontend/src/app/roles/rol').rolDTO[];
- roles: import("c:/Users/mariela.jimenez/Pictures/BAQS-FRONTENT-Main/src/app/roles/rol").rolDTO[];
- companias: import("c:/Users/mariela.jimenez/Pictures/BAQS-FRONTENT-Main/src/app/companias/compania").companiaDTO[];
- // companias: import('d:/Espacio_de_trabajo/BAQS-Frontend/BAQS-Frontend/src/app/companias/compania').companiaDTO[];
+  // roles: import('d:/Espacio_de_trabajo/BAQS-Frontend/BAQS-Frontend/src/app/roles/rol').rolDTO[];
+  roles: rolDTO[];
+  companias: companiaDTO[];
   checked = false;
 
   constructor(
