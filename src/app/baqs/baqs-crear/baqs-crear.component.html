@@ -1,4 +1,5 @@
-<h1 class="title">Nuevo BAQ</h1>
+<app-spinner *ngIf="isLoading"></app-spinner>
+<h1>Nuevo BAQ</h1>
 
 <form [formGroup]="form">
   <div class="first-field">
@@ -55,15 +56,12 @@
         <mat-error>Debe seleccionar un tipo.</mat-error>
       </mat-form-field>
 
-      <mat-form-field
-        appearance="outline"
-        *ngIf="tipo === 'varchar' || tipo === 'decimal'"
-      >
+      <mat-form-field appearance="outline">
         <mat-label>Longitud</mat-label>
         <input type="number" matInput formControlName="longitud" />
       </mat-form-field>
 
-      <mat-form-field appearance="outline" *ngIf="tipo === 'decimal'">
+      <mat-form-field appearance="outline">
         <mat-label>Flotante</mat-label>
         <input type="number" matInput formControlName="flotantes" />
       </mat-form-field>
@@ -124,24 +122,24 @@
         <ng-container matColumnDef="longitud">
           <th mat-header-cell *matHeaderCellDef>Longitud</th>
           <td mat-cell *matCellDef="let columna" align="start">
-            <p *ngIf="columna.longitud">{{ columna.longitud }}</p>
-            <p *ngIf="!columna.longitud">N/A</p>
+            <span *ngIf="columna.longitud">{{ columna.longitud }}</span>
+            <span *ngIf="!columna.longitud">N/A</span>
           </td>
         </ng-container>
 
         <ng-container matColumnDef="flotantes">
           <th mat-header-cell *matHeaderCellDef>Flotantes</th>
           <td mat-cell *matCellDef="let columna" align="start">
-            <p *ngIf="columna.longitud">{{ columna.flotantes }}</p>
-            <p *ngIf="!columna.longitud">N/A</p>
+            <span *ngIf="columna.longitud">{{ columna.flotantes }}</span>
+            <span *ngIf="!columna.longitud">N/A</span>
           </td>
         </ng-container>
 
         <ng-container matColumnDef="nulos">
           <th mat-header-cell *matHeaderCellDef>Nulos</th>
           <td mat-cell *matCellDef="let columna" align="start">
-            <p *ngIf="columna.nulos" style="color: green">Sí</p>
-            <p *ngIf="!columna.nulos" style="color: red">No</p>
+            <span *ngIf="columna.nulos" style="color: green">Sí</span>
+            <span *ngIf="!columna.nulos" style="color: red">No</span>
           </td>
         </ng-container>
 
@@ -167,5 +165,8 @@
     >
       Crear Tabla
     </button>
+    <a mat-stroked-button routerLink="/baqs">Cancelar</a>
   </div>
 </form>
+
+<app-mostrar-errores [errores]="errores"></app-mostrar-errores>

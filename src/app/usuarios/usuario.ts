@@ -14,7 +14,6 @@ export interface usuarioCreacionDTO {
   idCompania: number;
   nombre: string;
   email: string;
-  _Password: string;
   estado: boolean;
 }
 
@@ -23,5 +22,4 @@ export interface usuarioActualizarDTO {
   idCompania: number;
   nombre: string;
   email: string;
-  _Password: string;
 }

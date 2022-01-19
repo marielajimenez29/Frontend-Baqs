@@ -14,12 +14,11 @@
 }
 
 .tabla-columnas {
-  width: 40%;
+  width: 80%;
 }
 
 .buttons {
   display: flex;
-  justify-content: center;
   margin-top: 3rem;
 }
 
@@ -27,9 +26,14 @@
   background: black;
   color: white;
   width: 20%;
-  border-radius: 9px;
+  margin-right: 1rem;
 }
 
 .buttons button[disabled] {
   background: gray;
+}
+
+a {
+  text-decoration: none;
+  width: 15%;
 }

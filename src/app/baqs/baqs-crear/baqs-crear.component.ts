@@ -103,15 +103,21 @@ export class BaqsCrearComponent implements OnInit {
   }
 
   cargarAreas() {
+    this.isLoading = true;
     this.areasService.obtenerTodos().subscribe(
       (areas) => {
         this.areas = areas;
+        this.isLoading = false;
       },
-      (error) => (this.errores = parsearErroresAPI(error))
+      (error) => {
+        this.errores = parsearErroresAPI(error);
+        this.isLoading = false;
+      }
     );
   }
 
   crearTabla() {
+    this.isLoading = true;
     //crear cabecera
     let baqCreacionDTO: baqCreacionDTO = {
       idArea: this.form.value.idArea,
@@ -125,10 +131,14 @@ export class BaqsCrearComponent implements OnInit {
 
     this.baqsService.crear(baqCreacionDTO).subscribe(
       () => {
+        this.isLoading = false;
         alert('¡Tabla creada correctamente!');
         this.router.navigate(['baqs']);
       },
-      (errores) => (this.errores = parsearErroresAPI(errores))
+      (errores) => {
+        this.errores = parsearErroresAPI(errores);
+        this.isLoading = false;
+      }
     );
   }
 }

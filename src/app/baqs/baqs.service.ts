@@ -17,6 +17,10 @@ export class BaqsService {
     return this.http.post(`${this.apiURL}/crear`, baqs);
   }
 
+  public obtenerBAQS() {
+    return this.http.get<baqDTO[]>(`${this.apiURL}/obtenerBAQS`);
+  }
+
   public obtenerPaginado(
     pagina: number,
     cantidadRegistrosAMostrar: number

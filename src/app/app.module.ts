@@ -27,13 +27,16 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatChipsModule } from '@angular/material/chips';
+
+//Para date son 2
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 ///
 
 import { MenuComponent } from './menu/menu.component';
 import { ListaUsuariosComponent } from './usuarios/lista-usuarios/lista-usuarios.component';
 import { CrearUsuarioComponent } from './usuarios/crear-usuario/crear-usuario.component';
 import { EditarUsuarioComponent } from './usuarios/editar-usuario/editar-usuario.component';
-import { ProgramacionComponent } from './programacion/programacion.component';
 import { LoginComponent } from './login/login/login.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { AutorizadoComponent } from './login/autorizado/autorizado.component';
@@ -46,6 +49,12 @@ import { ErroresComponent } from './errores/errores.component';
 import { IndiceAreasComponent } from './areas/indice-areas/indice-areas.component';
 import { IndiceBaqsComponent } from './baqs/indice-baqs/indice-baqs.component';
 import { BaqsCrearComponent } from './baqs/baqs-crear/baqs-crear.component';
+import { CrearTareaComponent } from './programaciones/crear-tarea/crear-tarea.component';
+import { IndiceTareasComponent } from './programaciones/indice-tareas/indice-tareas.component';
+import { FormularioAreaComponent } from './areas/formulario-area/formulario-area.component';
+import { CrearAreaComponent } from './areas/crear-area/crear-area.component';
+import { EditarAreaComponent } from './areas/editar-area/editar-area.component';
+import { EditarTareaComponent } from './programaciones/editar-tarea/editar-tarea.component';
 
 @NgModule({
   declarations: [
@@ -54,7 +63,6 @@ import { BaqsCrearComponent } from './baqs/baqs-crear/baqs-crear.component';
     ListaUsuariosComponent,
     CrearUsuarioComponent,
     EditarUsuarioComponent,
-    ProgramacionComponent,
     LoginComponent,
     LandingPageComponent,
     AutorizadoComponent,
@@ -66,6 +74,12 @@ import { BaqsCrearComponent } from './baqs/baqs-crear/baqs-crear.component';
     IndiceAreasComponent,
     IndiceBaqsComponent,
     BaqsCrearComponent,
+    CrearTareaComponent,
+    IndiceTareasComponent,
+    FormularioAreaComponent,
+    CrearAreaComponent,
+    EditarAreaComponent,
+    EditarTareaComponent,
   ],
   imports: [
     BrowserModule,
@@ -87,6 +101,8 @@ import { BaqsCrearComponent } from './baqs/baqs-crear/baqs-crear.component';
     MatProgressSpinnerModule,
     MatPaginatorModule,
     MatChipsModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
     NgbModule,
   ],
   providers: [],

@@ -47,33 +47,6 @@
         />
         <mat-error>Debe ingresar un Email.</mat-error>
       </mat-form-field>
-
-      <div>
-        <mat-checkbox
-          color="primary"
-          [(ngModel)]="checked"
-          formControlName="cambioPassword"
-          style="margin-bottom: 1rem"
-        >
-          Nuevo Password
-        </mat-checkbox>
-      </div>
-
-      <div *ngIf="checked">
-        <mat-form-field appearance="outline">
-          <mat-label>Nuevo Password</mat-label>
-          <input
-            type="password"
-            formControlName="_Password"
-            placeholder="Password"
-            matInput
-          />
-          <mat-error>El password debe contener más de 8 caracteres.</mat-error>
-        </mat-form-field>
-        <p>
-          *Si deja el campo de Password vacío, la contraseña no se modififcará.
-        </p>
-      </div>
     </div>
 
     <div>

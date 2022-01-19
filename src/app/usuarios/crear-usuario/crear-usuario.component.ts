@@ -32,7 +32,6 @@ export class CrearUsuarioComponent implements OnInit {
       idCompania: ['', { validators: [Validators.required] }],
       nombre: ['', { validators: [Validators.required] }],
       email: ['', { validators: [Validators.required, Validators.email] }],
-      _Password: ['', { validators: [Validators.required] }],
     });
 
     this.getRoles();

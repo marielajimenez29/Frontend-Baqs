@@ -1,0 +1,18 @@
+mat-form-field,
+mat-label {
+  margin-right: 1rem;
+}
+
+.title-view {
+  margin-bottom: 3rem;
+}
+
+button {
+  background: black;
+  color: white;
+  margin-right: 1rem;
+}
+
+a {
+  text-decoration: none;
+}

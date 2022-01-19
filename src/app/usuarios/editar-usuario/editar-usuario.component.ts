@@ -37,8 +37,6 @@ export class EditarUsuarioComponent implements OnInit {
       idCompania: ['', { validators: [Validators.required] }],
       nombre: ['', { validators: [Validators.required] }],
       email: ['', { validators: [Validators.required, Validators.email] }],
-      _Password: ['', { validators: [Validators.minLength(8)] }],
-      cambioPassword: '',
     });
 
     this.getRoles();
@@ -84,7 +82,6 @@ export class EditarUsuarioComponent implements OnInit {
       idCompania: this.form.value.idCompania,
       nombre: this.form.value.nombre,
       email: this.form.value.email,
-      _Password: this.form.value._Password,
     };
 
     this.usuariosService.modificar(this.modelo.idUsuario, usuario).subscribe(

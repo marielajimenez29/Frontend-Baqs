@@ -39,4 +39,8 @@ export class UsuariosService {
   public desactivar(id: number) {
     return this.http.put(`${this.apiURL}/desactivar/${id}`, null);
   }
+
+  public eliminar(id: number) {
+    return this.http.delete(`${this.apiURL}/eliminar/${id}`);
+  }
 }

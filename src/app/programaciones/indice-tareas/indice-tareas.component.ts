@@ -2,19 +2,27 @@ import { HttpResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { PageEvent } from '@angular/material/paginator';
 import { parsearErroresAPI } from 'src/app/helpers/helpers';
-import { areaDTO } from '../area';
-import { AreasService } from '../areas.service';
+import { tareaDTO } from '../tarea';
+import { TareasService } from '../tareas.service';
 
 @Component({
-  selector: 'app-indice-areas',
-  templateUrl: './indice-areas.component.html',
-  styleUrls: ['./indice-areas.component.css'],
+  selector: 'app-indice-tareas',
+  templateUrl: './indice-tareas.component.html',
+  styleUrls: ['./indice-tareas.component.css'],
 })
-export class IndiceAreasComponent implements OnInit {
-  constructor(private areasService: AreasService) {}
+export class IndiceTareasComponent implements OnInit {
+  constructor(private tareasService: TareasService) {}
 
-  columnasAMostrar = ['nombre', 'estado', 'opciones'];
-  areas: areaDTO[];
+  columnasAMostrar = [
+    'nombre',
+    'nombreBAQ',
+    'ultima_ejecucion',
+    'ejecucion',
+    'estado',
+    'opciones',
+  ];
+
+  tareas: tareaDTO[];
 
   //Paginación
   cantidadTotalRegistros;
@@ -32,16 +40,15 @@ export class IndiceAreasComponent implements OnInit {
 
   cargarRegistrosPaginacion(pagina: number, cantidadElementosAMostrar) {
     this.isLoading = true;
-    this.areasService
+    this.tareasService
       .obtenerPaginado(pagina, cantidadElementosAMostrar)
       .subscribe(
-        (respuesta: HttpResponse<areaDTO[]>) => {
-          this.areas = respuesta.body;
+        (respuesta: HttpResponse<tareaDTO[]>) => {
+          this.tareas = respuesta.body;
 
           this.cantidadTotalRegistros = respuesta.headers.get(
             'cantidadTotalRegistros'
           );
-          console.log(respuesta.body);
 
           this.isLoading = false;
         },
@@ -62,10 +69,25 @@ export class IndiceAreasComponent implements OnInit {
     );
   }
 
-  activar(id: number) {
-    this.areasService.activar(id).subscribe(
+  eliminar(id: number) {
+    this.tareasService.eliminar(id).subscribe(
       () => {
-        alert('¡Área activada!');
+        alert('¡Tarea eliminada!');
+        this.cargarRegistrosPaginacion(
+          this.paginaActual,
+          this.cantidadRegistrosAMostrar
+        );
+      },
+      (error) => {
+        this.errores = parsearErroresAPI(error);
+      }
+    );
+  }
+
+  activar(id: number) {
+    this.tareasService.activar(id).subscribe(
+      () => {
+        alert('¡Tarea activada!');
         this.cargarRegistrosPaginacion(
           this.paginaActual,
           this.cantidadRegistrosAMostrar
@@ -76,9 +98,9 @@ export class IndiceAreasComponent implements OnInit {
   }
 
   desactivar(id: number) {
-    this.areasService.desactivar(id).subscribe(
+    this.tareasService.desactivar(id).subscribe(
       () => {
-        alert('¡Área desactivada!');
+        alert('¡Tarea desactivada!');
         this.cargarRegistrosPaginacion(
           this.paginaActual,
           this.cantidadRegistrosAMostrar

@@ -21,6 +21,8 @@ export class ListaUsuariosComponent implements OnInit {
     'opciones',
   ];
 
+  errores: string[] = [];
+
   ngOnInit(): void {
     //carga las cosas cuando se inicia
     this.cargarUsuarios();
@@ -49,6 +51,16 @@ export class ListaUsuariosComponent implements OnInit {
     this.usuariosService.desactivar(id).subscribe(
       () => {
         alert('¡Usuario Desactivado!');
+        this.cargarUsuarios();
+      },
+      (error) => alert(error.error)
+    );
+  }
+
+  eliminar(id: number) {
+    this.usuariosService.eliminar(id).subscribe(
+      () => {
+        alert('¡Usuario Eliminado!');
         this.cargarUsuarios();
       },
       (error) => alert(error.error)

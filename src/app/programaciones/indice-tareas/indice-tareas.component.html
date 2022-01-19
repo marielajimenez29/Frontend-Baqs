@@ -1,0 +1,109 @@
+<h1>Programación</h1>
+
+<div>
+  <button mat-flat-button routerLink="/programaciones/crear">Nuevo</button>
+</div>
+
+<div>
+  <table
+    #table
+    mat-table
+    [dataSource]="tareas"
+    class="mat-elevation-z3 tabla-tareas"
+  >
+    <ng-container matColumnDef="nombre">
+      <th mat-header-cell *matHeaderCellDef>Nombre</th>
+      <td mat-cell *matCellDef="let tarea" align="start">
+        {{ tarea.nombre }}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="nombreBAQ">
+      <th mat-header-cell *matHeaderCellDef>BAQ</th>
+      <td mat-cell *matCellDef="let tarea" align="start">
+        {{ tarea.nombreBAQ }}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="ultima_ejecucion">
+      <th mat-header-cell *matHeaderCellDef>Última Ejecución</th>
+      <td mat-cell *matCellDef="let tarea" align="start">
+        <span *ngIf="tarea.ultima_ejecucion">
+          {{ tarea.ultima_ejecucion | date: "dd/MM/yyyy h:mm:ss a" }}
+        </span>
+        <span *ngIf="!tarea.ultima_ejecucion" style="color: chocolate"
+          >Nuevo</span
+        >
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="ejecucion">
+      <th mat-header-cell *matHeaderCellDef>Ejecución</th>
+      <td mat-cell *matCellDef="let tarea" align="start">
+        {{ tarea.ejecucion }}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="estado">
+      <th mat-header-cell *matHeaderCellDef>Estado</th>
+      <td mat-cell *matCellDef="let tarea" align="start">
+        <mat-chip-list>
+          <mat-chip
+            *ngIf="tarea.estado"
+            color="primary"
+            selected=""
+            matTooltip="Desactivar"
+            (click)="desactivar(tarea.idTarea)"
+            >Activo</mat-chip
+          >
+          <mat-chip
+            *ngIf="!tarea.estado"
+            color="warn"
+            selected
+            matTooltip="Activar"
+            (click)="activar(tarea.idTarea)"
+            >Desactivado</mat-chip
+          >
+        </mat-chip-list>
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="opciones">
+      <th mat-header-cell *matHeaderCellDef>Opciones</th>
+      <td mat-cell *matCellDef="let tarea">
+        <a
+          mat-icon-button
+          matTooltip="Ver y Editar"
+          routerLink="/programaciones/editar/{{ tarea.idTarea }}"
+        >
+          <mat-icon>edit</mat-icon>
+        </a>
+        <a
+          mat-icon-button
+          matTooltip="Eliminar"
+          (click)="eliminar(tarea.idTarea)"
+        >
+          <mat-icon>delete</mat-icon>
+        </a>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="columnasAMostrar; sticky: true"></tr>
+    <tr mat-row *matRowDef="let row; columns: columnasAMostrar"></tr>
+    <tr class="mat-row" *matNoDataRow>
+      <td class="mat-cell" colspan="8" style="color: red">
+        Por el momento, no tienes ninguna tabla creada.
+      </td>
+    </tr>
+  </table>
+  <mat-paginator
+    class="mat-elevation-z8"
+    [pageSizeOptions]="[5, 10, 15, 20, 50]"
+    showFirstLastButtons
+    [length]="cantidadTotalRegistros"
+    [pageSize]="cantidadRegistrosAMostrar"
+    (page)="actualizarPaginacion($event)"
+  >
+  </mat-paginator>
+</div>
+
+<app-mostrar-errores [errores]="errores"></app-mostrar-errores>

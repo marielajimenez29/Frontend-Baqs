@@ -1,0 +1,97 @@
+<h1 class="title-view">Crear Programación</h1>
+<form [formGroup]="form">
+  <div>
+    <mat-form-field appearance="outline" style="width: 40%">
+      <mat-label>Nombre*</mat-label>
+      <input
+        type="text"
+        placeholder="Nombre del BAQ"
+        matInput
+        formControlName="nombre"
+      />
+      <mat-error>Debe agregar un nombre.</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>BAQ*</mat-label>
+      <mat-select formControlName="idCabecera">
+        <mat-option *ngFor="let baq of baqs" [value]="baq.idCabecera">
+          {{ baq.nombre }}
+        </mat-option>
+      </mat-select>
+      <mat-error>Debe seleccionar un BAQ.</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Filtro API*</mat-label>
+      <mat-select formControlName="filtro">
+        <mat-option *ngFor="let filtro of filtros" [value]="filtro">
+          {{ filtro }}
+        </mat-option>
+      </mat-select>
+      <mat-error>Debe seleccionar un filtro.</mat-error>
+    </mat-form-field>
+  </div>
+
+  <hr />
+  <div>
+    <mat-form-field appearance="outline" style="width: 80%">
+      <mat-label>Descripción</mat-label>
+      <textarea
+        placeholder="Descripción"
+        matInput
+        formControlName="descripcion"
+      ></textarea>
+    </mat-form-field>
+  </div>
+
+  <div>
+    <mat-label>Inicio</mat-label>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Fecha de Inicio*</mat-label>
+      <!-- se asocia con #picker -->
+      <input matInput [matDatepicker]="pickerInicio" formControlName="fecha" />
+      <mat-error>Debe indicar una fecha.</mat-error>
+      <!-- se asocia con #picker -->
+      <mat-datepicker-toggle
+        matSuffix
+        [for]="pickerInicio"
+      ></mat-datepicker-toggle>
+      <mat-datepicker #pickerInicio></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Hora*</mat-label>
+      <input
+        type="time"
+        matInput
+        name="week"
+        min="09:00"
+        max="18:00"
+        formControlName="hora"
+      />
+      <mat-error>Debe indicar la hora.</mat-error>
+    </mat-form-field>
+    <mat-label>Repetir Cada</mat-label>
+    <mat-form-field appearance="outline" style="width: 10%">
+      <mat-label>Días*</mat-label>
+      <input
+        type="number"
+        placeholder="0"
+        matInput
+        formControlName="intervalo"
+      />
+      <mat-error>Debe indicar los días.</mat-error>
+    </mat-form-field>
+  </div>
+
+  <div>
+    <button mat-flat-button (click)="crear()" [disabled]="form.invalid">
+      Crear Tarea
+    </button>
+    <a mat-stroked-button routerLink="/programaciones">Cancelar</a>
+  </div>
+</form>
+
+<app-mostrar-errores [errores]="errores"></app-mostrar-errores>

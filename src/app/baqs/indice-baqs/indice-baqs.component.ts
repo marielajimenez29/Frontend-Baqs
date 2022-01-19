@@ -18,7 +18,7 @@ export class IndiceBaqsComponent implements OnInit {
     'url',
     'fecha',
     'nombreArea',
-    'estado',
+    // 'estado',
     'opciones',
   ];
   baqs: baqDTO[];
