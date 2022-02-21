@@ -1,6 +1,7 @@
 import { HttpResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { PageEvent } from '@angular/material/paginator';
+import { NotifierService } from 'angular-notifier';
 import { parsearErroresAPI } from 'src/app/helpers/helpers';
 import { tareaDTO } from '../tarea';
 import { TareasService } from '../tareas.service';
@@ -11,7 +12,14 @@ import { TareasService } from '../tareas.service';
   styleUrls: ['./indice-tareas.component.css'],
 })
 export class IndiceTareasComponent implements OnInit {
-  constructor(private tareasService: TareasService) {}
+  private notifier: NotifierService;
+
+  constructor(
+    private tareasService: TareasService,
+    notifierService: NotifierService
+  ) {
+    this.notifier = notifierService;
+  }
 
   columnasAMostrar = [
     'nombre',
@@ -85,9 +93,10 @@ export class IndiceTareasComponent implements OnInit {
   }
 
   activar(id: number) {
+    this.notifier.notify('success', 'You are awesome! I mean it!');
+
     this.tareasService.activar(id).subscribe(
       () => {
-        alert('¡Tarea activada!');
         this.cargarRegistrosPaginacion(
           this.paginaActual,
           this.cantidadRegistrosAMostrar
@@ -98,6 +107,8 @@ export class IndiceTareasComponent implements OnInit {
   }
 
   desactivar(id: number) {
+    this.notifier.notify('success', 'You are awesome! I mean it!');
+
     this.tareasService.desactivar(id).subscribe(
       () => {
         alert('¡Tarea desactivada!');

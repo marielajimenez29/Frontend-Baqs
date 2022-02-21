@@ -1,4 +1,5 @@
-.tabla-usuarios {
+.tabla-usuarios,
+mat-paginator {
   width: 80%;
 }
 

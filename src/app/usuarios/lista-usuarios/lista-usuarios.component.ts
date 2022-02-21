@@ -1,4 +1,7 @@
+import { HttpResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { PageEvent } from '@angular/material/paginator';
+import { parsearErroresAPI } from 'src/app/helpers/helpers';
 import { usuarioDTO } from '../usuario';
 import { UsuariosService } from '../usuarios.service';
 
@@ -20,20 +23,50 @@ export class ListaUsuariosComponent implements OnInit {
     'estado',
     'opciones',
   ];
+  isLoading = false;
+  //Paginación
+  cantidadTotalRegistros;
+  paginaActual = 1;
+  cantidadRegistrosAMostrar = 10;
 
   errores: string[] = [];
 
   ngOnInit(): void {
     //carga las cosas cuando se inicia
-    this.cargarUsuarios();
+    this.cargarUsuariosPaginacion(
+      this.paginaActual,
+      this.cantidadRegistrosAMostrar
+    );
   }
 
-  cargarUsuarios() {
-    this.usuariosService.obtenerTodos().subscribe(
-      (response) => {
-        this.usuarios = response;
-      },
-      (error) => console.log('Error ' + error)
+  cargarUsuariosPaginacion(pagina: number, cantidadElementosAMostrar) {
+    this.isLoading = true;
+    this.usuariosService
+      .obtenerPaginado(pagina, cantidadElementosAMostrar)
+      .subscribe(
+        (respuesta: HttpResponse<usuarioDTO[]>) => {
+          this.usuarios = respuesta.body;
+
+          this.cantidadTotalRegistros = respuesta.headers.get(
+            'cantidadTotalRegistros'
+          );
+
+          this.isLoading = false;
+        },
+        (error) => {
+          this.errores = parsearErroresAPI(error);
+          this.isLoading = false;
+        }
+      );
+  }
+
+  actualizarPaginacion(datos: PageEvent) {
+    this.paginaActual = datos.pageIndex + 1;
+    this.cantidadRegistrosAMostrar = datos.pageSize;
+
+    this.cargarUsuariosPaginacion(
+      this.paginaActual,
+      this.cantidadRegistrosAMostrar
     );
   }
 
@@ -41,7 +74,10 @@ export class ListaUsuariosComponent implements OnInit {
     this.usuariosService.activar(id).subscribe(
       () => {
         alert('¡Usuario Activado!');
-        this.cargarUsuarios();
+        this.cargarUsuariosPaginacion(
+          this.paginaActual,
+          this.cantidadRegistrosAMostrar
+        );
       },
       (error) => alert(error.error)
     );
@@ -51,7 +87,10 @@ export class ListaUsuariosComponent implements OnInit {
     this.usuariosService.desactivar(id).subscribe(
       () => {
         alert('¡Usuario Desactivado!');
-        this.cargarUsuarios();
+        this.cargarUsuariosPaginacion(
+          this.paginaActual,
+          this.cantidadRegistrosAMostrar
+        );
       },
       (error) => alert(error.error)
     );
@@ -61,7 +100,10 @@ export class ListaUsuariosComponent implements OnInit {
     this.usuariosService.eliminar(id).subscribe(
       () => {
         alert('¡Usuario Eliminado!');
-        this.cargarUsuarios();
+        this.cargarUsuariosPaginacion(
+          this.paginaActual,
+          this.cantidadRegistrosAMostrar
+        );
       },
       (error) => alert(error.error)
     );

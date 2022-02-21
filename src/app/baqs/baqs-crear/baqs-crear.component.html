@@ -48,7 +48,10 @@
 
       <mat-form-field appearance="outline">
         <mat-label>Tipo de dato*</mat-label>
-        <mat-select [(ngModel)]="tipo" formControlName="tipo">
+        <mat-select
+          formControlName="tipo"
+          (selectionChange)="verificarCampos()"
+        >
           <mat-option *ngFor="let tipo of tiposDato" [value]="tipo">
             {{ tipo }}
           </mat-option>
@@ -68,7 +71,6 @@
 
       <mat-checkbox
         class="example-margin"
-        [(ngModel)]="checked"
         color="primary"
         formControlName="nulos"
       >

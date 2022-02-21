@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
@@ -16,6 +16,22 @@ export class UsuariosService {
 
   private apiURL = environment.apiURL + 'usuarios';
 
+  public obtenerPaginado(
+    pagina: number,
+    cantidadRegistrosAMostrar: number
+  ): Observable<any> {
+    let params = new HttpParams();
+    params = params.append('pagina', pagina.toString());
+    params = params.append(
+      'recordsPorPagina',
+      cantidadRegistrosAMostrar.toString()
+    );
+
+    return this.http.get<usuarioDTO[]>(this.apiURL + '/todosPaginacion', {
+      observe: 'response',
+      params,
+    });
+  }
   public obtenerTodos() {
     return this.http.get<usuarioDTO[]>(`${this.apiURL}/getUsuarios`);
   }

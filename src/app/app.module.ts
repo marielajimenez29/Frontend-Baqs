@@ -10,6 +10,9 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 //Importar httpclient
 import { HttpClientModule } from '@angular/common/http';
 
+//notification Angular
+import { NotifierModule, NotifierOptions } from 'angular-notifier';
+
 ///material
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
@@ -42,7 +45,7 @@ import { LandingPageComponent } from './landing-page/landing-page.component';
 import { AutorizadoComponent } from './login/autorizado/autorizado.component';
 import { MostrarErroresComponent } from './helpers/mostrar-errores/mostrar-errores.component';
 import { SpinnerComponent } from './helpers/spinner/spinner.component';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+// import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FooterComponent } from './footer/footer.component';
 import { CorreoComponent } from './correo/correo.component';
 import { ErroresComponent } from './errores/errores.component';
@@ -55,6 +58,47 @@ import { FormularioAreaComponent } from './areas/formulario-area/formulario-area
 import { CrearAreaComponent } from './areas/crear-area/crear-area.component';
 import { EditarAreaComponent } from './areas/editar-area/editar-area.component';
 import { EditarTareaComponent } from './programaciones/editar-tarea/editar-tarea.component';
+
+const customNotifierOptions: NotifierOptions = {
+  position: {
+    horizontal: {
+      position: 'left',
+      distance: 12,
+    },
+    vertical: {
+      position: 'bottom',
+      distance: 12,
+      gap: 10,
+    },
+  },
+  theme: 'material',
+  behaviour: {
+    autoHide: 5000,
+    onClick: 'hide',
+    onMouseover: 'pauseAutoHide',
+    showDismissButton: true,
+    stacking: 4,
+  },
+  animations: {
+    enabled: true,
+    show: {
+      preset: 'slide',
+      speed: 300,
+      easing: 'ease',
+    },
+    hide: {
+      preset: 'fade',
+      speed: 300,
+      easing: 'ease',
+      offset: 50,
+    },
+    shift: {
+      speed: 300,
+      easing: 'ease',
+    },
+    overlap: 150,
+  },
+};
 
 @NgModule({
   declarations: [
@@ -103,7 +147,8 @@ import { EditarTareaComponent } from './programaciones/editar-tarea/editar-tarea
     MatChipsModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    NgbModule,
+    NotifierModule,
+    // NgbModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

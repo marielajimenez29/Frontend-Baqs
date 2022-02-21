@@ -68,38 +68,79 @@ export class BaqsCrearComponent implements OnInit {
       url: ['', { validators: [Validators.required] }],
       idArea: ['', { validators: [Validators.required] }],
       nombreColumna: '',
-      tipo: '',
+      tipo: 'varchar',
       longitud: 0,
       flotantes: 0,
       nulos: false,
     });
   }
   agregarColumna() {
-    console.log(this.form.value);
+    let longitud =
+      this.form.value.longitud === undefined
+        ? 0
+        : this.form.value.longitud === null
+        ? 0
+        : this.form.value.longitud;
+
+    let flotantes =
+      this.form.value.flotantes === undefined
+        ? 0
+        : this.form.value.flotantes === null
+        ? 0
+        : this.form.value.flotantes;
+
+    console.log('Logitud ' + longitud + ' Flotantes ' + flotantes);
 
     let columnasTemp: columnasDTO = {
       nombreColumna: this.form.value.nombreColumna,
       tipo: this.form.value.tipo,
-      longitud: this.form.value.longitud,
-      flotantes: this.form.value.flotantes,
+      // longitud: this.form.value.longitud,
+      // flotantes: this.form.value.flotantes,
+      longitud: longitud,
+      flotantes: flotantes,
       nulos: this.form.value.nulos,
     };
+
     this.columnas.push(columnasTemp);
-    this.table.renderRows();
+    this.table.renderRows(); //Refresca tabla para que se muestre actualizada
     this.limpiarFomulario();
   }
 
   limpiarFomulario() {
     this.form.patchValue({ nombreColumna: null });
     this.form.patchValue({ tipo: null });
-    this.form.patchValue({ longitud: 0 });
-    this.form.patchValue({ flotantes: 0 });
+    this.form.patchValue({ longitud: null });
+    this.form.patchValue({ flotantes: null });
     this.form.patchValue({ nulos: false });
   }
 
   eliminarElemento(index: number) {
     this.columnas.splice(index, 1);
     this.table.renderRows();
+  }
+  verificarCampos() {
+    let tipo = this.form.value.tipo;
+
+    switch (tipo) {
+      case 'varchar':
+        this.form.get('longitud').enable();
+        this.form.get('flotantes').disable();
+        break;
+      case 'int':
+      case 'bit':
+      case 'date':
+      case 'datetime':
+        this.form.get('longitud').disable();
+        this.form.get('flotantes').disable();
+        break;
+      case 'decimal':
+        this.form.get('longitud').enable();
+        this.form.get('flotantes').enable();
+        break;
+
+      default:
+        break;
+    }
   }
 
   cargarAreas() {
