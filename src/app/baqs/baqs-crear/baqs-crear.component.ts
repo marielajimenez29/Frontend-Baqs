@@ -153,6 +153,7 @@ export class BaqsCrearComponent implements OnInit {
       (error) => {
         this.errores = parsearErroresAPI(error);
         this.isLoading = false;
+        //
       }
     );
   }
