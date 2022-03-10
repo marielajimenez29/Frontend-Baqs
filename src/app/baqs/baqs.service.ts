@@ -37,4 +37,8 @@ export class BaqsService {
       params,
     });
   }
+
+  public eliminar(id: number) {
+    return this.http.delete(`${this.apiURL}/eliminar/${id}`);
+  }
 }

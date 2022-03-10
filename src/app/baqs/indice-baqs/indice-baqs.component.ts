@@ -67,4 +67,17 @@ export class IndiceBaqsComponent implements OnInit {
       this.cantidadRegistrosAMostrar
     );
   }
+
+  eliminar(idCabecera: number) {
+    this.baqsService.eliminar(idCabecera).subscribe(
+      () => {
+        alert('¡BAQ eliminado correctamente!');
+        this.cargarRegistrosPaginacion(
+          this.paginaActual,
+          this.cantidadRegistrosAMostrar
+        );
+      },
+      (error) => parsearErroresAPI(error)
+    );
+  }
 }

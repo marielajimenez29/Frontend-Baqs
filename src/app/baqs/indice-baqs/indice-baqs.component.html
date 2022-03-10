@@ -54,11 +54,15 @@
     </ng-container> -->
     <ng-container matColumnDef="opciones">
       <th mat-header-cell *matHeaderCellDef>Opciones</th>
-      <td mat-cell *matCellDef="let area">
+      <td mat-cell *matCellDef="let baq">
         <a mat-icon-button matTooltip="Ver y Editar">
           <mat-icon>edit</mat-icon>
         </a>
-        <a mat-icon-button matTooltip="Eliminar">
+        <a
+          mat-icon-button
+          matTooltip="Eliminar"
+          (click)="eliminar(baq.idCabecera)"
+        >
           <mat-icon>delete</mat-icon>
         </a>
       </td>
