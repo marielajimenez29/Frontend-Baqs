@@ -21,5 +21,6 @@ export interface baqDTO {
   nombre: string;
   _url: string;
   fecha: Date;
+  //
   estado: boolean;
 }
